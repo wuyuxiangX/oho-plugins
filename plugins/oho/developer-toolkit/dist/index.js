@@ -1,19 +1,11 @@
-function defineTool(tool) {
-  return tool;
-}
-function definePlugin(plugin) {
-  return plugin;
-}
-
-// src/index.ts
-var formatJson = defineTool({
+var formatJson = {
   id: "json.format",
   execute({ value, indent = 2 }) {
     const formatted = JSON.stringify(JSON.parse(value), null, indent);
     return { formatted, characterCount: [...formatted].length };
   }
-});
-var inspectText = defineTool({
+};
+var inspectText = {
   id: "text.inspect",
   execute({ text }) {
     const trimmed = text.trim();
@@ -24,10 +16,10 @@ var inspectText = defineTool({
       utf8Bytes: new TextEncoder().encode(text).byteLength
     };
   }
-});
-var index_default = definePlugin({
+};
+var index_default = {
   tools: [formatJson, inspectText]
-});
+};
 export {
   index_default as default
 };
