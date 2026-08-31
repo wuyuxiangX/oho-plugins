@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "feishu",
+  "version": "1.0.0",
+  "name": "飞书",
+  "description": "连接中国区飞书，查看任务列表和任务详情。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "feishu", "label": "飞书" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

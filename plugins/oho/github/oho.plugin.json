@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "github",
+  "version": "1.0.0",
+  "name": "GitHub",
+  "description": "读取公开仓库、文件、Issue、Pull Request、提交、分支和 Release。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "github", "label": "GitHub" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

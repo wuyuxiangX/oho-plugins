@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "lark",
+  "version": "1.0.0",
+  "name": "Lark",
+  "description": "连接国际区 Lark，查看任务列表和任务详情。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "lark", "label": "Lark" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

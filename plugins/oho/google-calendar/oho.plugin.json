@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "google-calendar",
+  "version": "1.0.0",
+  "name": "Google Calendar",
+  "description": "读取日历列表、事件详情和忙闲状态。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [
+      { "id": "google_calendar", "label": "Google Calendar" }
+    ]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

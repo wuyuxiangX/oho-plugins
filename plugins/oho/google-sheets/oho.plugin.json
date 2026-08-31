@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "google-sheets",
+  "version": "1.0.0",
+  "name": "Google Sheets",
+  "description": "读取表格结构和一个或多个明确范围。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [
+      { "id": "google_sheets", "label": "Google Sheets" }
+    ]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

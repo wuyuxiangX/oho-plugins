@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "google-drive",
+  "version": "1.0.0",
+  "name": "Google Drive",
+  "description": "搜索和查看文件、文件夹及其元数据。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "google_drive", "label": "Google Drive" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

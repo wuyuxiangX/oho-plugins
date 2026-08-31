@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "notion",
+  "version": "1.0.0",
+  "name": "Notion",
+  "description": "搜索并分页读取你明确授权的页面、属性和内容块。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "notion", "label": "Notion" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

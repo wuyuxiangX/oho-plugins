@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "resend",
+  "version": "1.0.0",
+  "name": "Resend",
+  "description": "使用自己的 Resend 账号发送事务邮件，每次发送都需要批准。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "resend", "label": "Resend" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

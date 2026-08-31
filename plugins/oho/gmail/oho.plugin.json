@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "gmail",
+  "version": "1.1.0",
+  "name": "Gmail",
+  "description": "搜索和读取邮件与标签、管理草稿，并在逐次批准后发送邮件。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "gmail", "label": "Gmail" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

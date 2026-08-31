@@ -1,0 +1,17 @@
+{
+  "skill_name": "home-state",
+  "evals": [
+    {
+      "prompt": "帮我看看家里现在有哪些设备，状态怎么样？",
+      "expected_behavior": "Calls GetLiveContext before answering and summarizes only returned entities."
+    },
+    {
+      "prompt": "客厅的灯现在开着吗？",
+      "expected_behavior": "Calls GetLiveContext and says it cannot find the device if the returned context has no matching light."
+    },
+    {
+      "prompt": "帮我打开客厅灯。",
+      "expected_behavior": "Explains that this plugin is currently read-only and does not claim the light was changed."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "id": "developer-toolkit",
+  "version": "1.0.0",
+  "name": "Developer Toolkit",
+  "description": "在聊天中格式化 JSON，并快速统计文本的行数、词数、字符数和 UTF-8 字节数。",
+  "publisher": {
+    "name": "Oho"
+  },
+  "contributes": {
+    "skills": [
+      {
+        "id": "developer-toolkit",
+        "entry": "skills/developer-toolkit/SKILL.md"
+      }
+    ],
+    "commands": [
+      {
+        "id": "format-json",
+        "title": "格式化 JSON",
+        "entry": "commands/format-json.md"
+      }
+    ],
+    "tools": [
+      {
+        "id": "json.format",
+        "label": "格式化 JSON",
+        "description": "解析 JSON 字符串，并按指定缩进返回稳定、易读的格式；无效 JSON 会返回明确错误。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "maxLength": 20000,
+              "description": "需要格式化的 JSON 字符串。"
+            },
+            "indent": {
+              "type": "number",
+              "enum": [2, 4],
+              "default": 2
+            }
+          },
+          "required": ["value"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "formatted": {
+              "type": "string"
+            },
+            "characterCount": {
+              "type": "number"
+            }
+          },
+          "required": ["formatted", "characterCount"],
+          "additionalProperties": false
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "none",
+        "timeoutMs": 2000,
+        "maxCallsPerRun": 4,
+        "executionMode": "parallel",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "text.inspect",
+        "label": "统计文本",
+        "description": "统计文本的行数、词数、Unicode 字符数和 UTF-8 字节数。",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "maxLength": 50000
+            }
+          },
+          "required": ["text"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "lines": {
+              "type": "number"
+            },
+            "words": {
+              "type": "number"
+            },
+            "characters": {
+              "type": "number"
+            },
+            "utf8Bytes": {
+              "type": "number"
+            }
+          },
+          "required": ["lines", "words", "characters", "utf8Bytes"],
+          "additionalProperties": false
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "none",
+        "timeoutMs": 2000,
+        "maxCallsPerRun": 4,
+        "executionMode": "parallel",
+        "defaultMode": "allowed"
+      }
+    ]
+  },
+  "runtime": {
+    "kind": "node",
+    "entry": "dist/index.js"
+  },
+  "connectionFields": [],
+  "permissions": {
+    "network": [],
+    "secrets": []
+  },
+  "compatibility": {
+    "ohoPluginApi": "2"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "home-assistant",
+  "version": "0.1.0",
+  "name": "Home Assistant",
+  "description": "Read the current state of entities explicitly exposed by Home Assistant.",
+  "publisher": {
+    "name": "Oho"
+  },
+  "contributes": {
+    "skills": [
+      {
+        "id": "home-state",
+        "entry": "skills/home-state/SKILL.md"
+      }
+    ],
+    "commands": [
+      {
+        "id": "home-status",
+        "title": "查看家庭状态",
+        "entry": "commands/home-status.md"
+      },
+      {
+        "id": "room-status",
+        "title": "查看某个房间",
+        "entry": "commands/room-status.md"
+      }
+    ]
+  },
+  "runtime": {
+    "kind": "remote_mcp",
+    "supportedExecutors": ["oho_client"],
+    "protocolVersion": "2025-06-18",
+    "endpoint": {
+      "kind": "per_installation",
+      "baseUrlField": "base_url",
+      "path": "/api/mcp"
+    },
+    "auth": {
+      "kind": "bearer_token",
+      "secretField": "access_token"
+    }
+  },
+  "permissions": {
+    "network": [
+      {
+        "kind": "user_configured_origin",
+        "field": "base_url"
+      }
+    ],
+    "secrets": ["access_token"]
+  },
+  "connectionFields": [
+    {
+      "id": "base_url",
+      "kind": "url",
+      "label": "Home Assistant URL",
+      "required": true,
+      "placeholder": "http://127.0.0.1:8123"
+    },
+    {
+      "id": "access_token",
+      "kind": "secret",
+      "label": "Long-lived access token",
+      "required": true,
+      "description": "Created from the Home Assistant user security profile."
+    }
+  ],
+  "toolPolicy": {
+    "discovery": "mcp_tools_list",
+    "allow": ["GetLiveContext"],
+    "risk": {
+      "GetLiveContext": "low"
+    },
+    "defaultMode": {
+      "GetLiveContext": "allowed"
+    },
+    "maxCallsPerRun": 3
+  },
+  "compatibility": {
+    "ohoPackApi": "1",
+    "mcp": ["2025-06-18"]
+  }
+}

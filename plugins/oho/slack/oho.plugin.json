@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "slack",
+  "version": "1.0.0",
+  "name": "Slack",
+  "description": "读取频道、消息和线程，并在逐次批准后发送纯文本消息。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "slack", "label": "Slack" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}

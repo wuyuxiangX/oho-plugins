@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "linear",
+  "version": "1.0.0",
+  "name": "Linear",
+  "description": "查看和搜索 Issues、评论、Teams 与 Projects。",
+  "publisher": { "name": "Oho" },
+  "contributes": {
+    "skills": [],
+    "commands": [],
+    "connections": [{ "id": "linear", "label": "Linear" }]
+  },
+  "compatibility": { "ohoPackApi": "1" }
+}
