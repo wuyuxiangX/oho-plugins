@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "google-calendar",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Google Calendar",
   "description": "读取日历列表、事件详情和忙闲状态。",
   "icon": "assets/icon.svg",
@@ -61,6 +61,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 5,
         "executionMode": "sequential",
+        "displayDescription": "查看指定日历和时间范围内的日程。",
         "defaultMode": "allowed"
       },
       {
@@ -88,6 +89,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "浏览账号中可以访问的日历。",
         "defaultMode": "allowed"
       },
       {
@@ -123,6 +125,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看一项日程的时间、地点和详细说明。",
         "defaultMode": "allowed"
       },
       {
@@ -170,6 +173,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "查看日历在指定时段的忙闲情况。",
         "defaultMode": "allowed"
       }
     ]

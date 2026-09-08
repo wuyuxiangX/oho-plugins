@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "resend",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Resend",
   "description": "使用自己的 Resend 账号发送事务邮件，每次发送都需要批准。",
   "icon": "assets/icon.svg",
@@ -66,6 +66,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 2,
         "executionMode": "sequential",
+        "displayDescription": "准备事务邮件的发送请求，包含收件人、主题和正文。",
         "defaultMode": "approval_required"
       }
     ]

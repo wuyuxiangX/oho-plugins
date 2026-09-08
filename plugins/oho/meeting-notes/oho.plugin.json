@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "meeting-notes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "会议纪要",
   "description": "把零散会议记录整理成结论、行动项、负责人和待确认问题。无需账号或外部服务。",
   "icon": "assets/icon.svg",

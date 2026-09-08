@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "gmail",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "name": "Gmail",
   "description": "搜索和读取邮件与标签、管理草稿，并在逐次批准后发送邮件。",
   "icon": "assets/icon.svg",
@@ -58,6 +58,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 8,
         "executionMode": "sequential",
+        "displayDescription": "按关键词、发件人或 Gmail 搜索条件查找邮件。",
         "defaultMode": "allowed"
       },
       {
@@ -87,6 +88,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "阅读一组往来邮件，了解完整的讨论内容。",
         "defaultMode": "allowed"
       },
       {
@@ -135,6 +137,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "创建或更新邮件草稿，保存收件人、主题和正文。",
         "defaultMode": "approval_required"
       },
       {
@@ -164,6 +167,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 2,
         "executionMode": "sequential",
+        "displayDescription": "为已有草稿准备发送请求，确认邮件内容后再发送。",
         "defaultMode": "approval_required"
       },
       {
@@ -184,6 +188,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 3,
         "executionMode": "sequential",
+        "displayDescription": "查看邮箱中的系统标签和自定义标签。",
         "defaultMode": "allowed"
       },
       {
@@ -211,6 +216,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "浏览尚未发送的邮件草稿。",
         "defaultMode": "allowed"
       },
       {
@@ -240,6 +246,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "查看指定草稿的收件人、主题和正文。",
         "defaultMode": "allowed"
       }
     ]

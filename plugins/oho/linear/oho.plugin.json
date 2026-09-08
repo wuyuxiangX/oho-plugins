@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "linear",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Linear",
   "description": "查看和搜索 Issues、评论、Teams 与 Projects。",
   "icon": "assets/icon.svg",
@@ -50,6 +50,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 5,
         "executionMode": "sequential",
+        "displayDescription": "浏览 Linear 中的任务，查看标题、状态和优先级。",
         "defaultMode": "allowed"
       },
       {
@@ -79,6 +80,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "阅读指定任务的说明和详细信息。",
         "defaultMode": "allowed"
       },
       {
@@ -114,6 +116,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "按关键词搜索任务和问题。",
         "defaultMode": "allowed"
       },
       {
@@ -141,6 +144,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "查看工作区中的团队。",
         "defaultMode": "allowed"
       },
       {
@@ -168,6 +172,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "浏览项目列表，了解项目状态和进展。",
         "defaultMode": "allowed"
       },
       {
@@ -203,6 +208,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看任务下的评论和讨论。",
         "defaultMode": "allowed"
       }
     ]

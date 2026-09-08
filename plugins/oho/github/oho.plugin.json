@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "github",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "GitHub",
   "description": "读取公开仓库、文件、Issue、Pull Request、提交、分支和 Release。",
   "icon": "assets/icon.svg",
@@ -56,6 +56,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看账号关联的公开仓库，了解各个项目的基本信息。",
         "defaultMode": "allowed"
       },
       {
@@ -97,6 +98,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "按关键词查找公开项目和代码仓库。",
         "defaultMode": "allowed"
       },
       {
@@ -132,6 +134,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看仓库简介、主要语言、默认分支等项目信息。",
         "defaultMode": "allowed"
       },
       {
@@ -183,6 +186,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "浏览仓库中的文件和文件夹，了解项目结构。",
         "defaultMode": "allowed"
       },
       {
@@ -229,6 +233,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "阅读仓库中的指定文件，例如说明文档或源代码。",
         "defaultMode": "allowed"
       },
       {
@@ -285,6 +290,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看仓库的问题和需求列表，了解处理进度。",
         "defaultMode": "allowed"
       },
       {
@@ -325,6 +331,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "阅读指定 Issue 的详细内容和当前状态。",
         "defaultMode": "allowed"
       },
       {
@@ -377,6 +384,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看 Issue 下的评论和讨论。",
         "defaultMode": "allowed"
       },
       {
@@ -433,6 +441,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看仓库的代码合并请求及其处理状态。",
         "defaultMode": "allowed"
       },
       {
@@ -473,6 +482,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "了解指定合并请求的说明、分支和变更情况。",
         "defaultMode": "allowed"
       },
       {
@@ -525,6 +535,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看合并请求涉及的文件和具体代码改动。",
         "defaultMode": "allowed"
       },
       {
@@ -577,6 +588,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "浏览仓库的提交记录，了解最近的开发活动。",
         "defaultMode": "allowed"
       },
       {
@@ -618,6 +630,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看一次提交的说明、作者和文件改动。",
         "defaultMode": "allowed"
       },
       {
@@ -665,6 +678,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看仓库的分支列表。",
         "defaultMode": "allowed"
       },
       {
@@ -712,6 +726,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看已发布的版本及更新说明。",
         "defaultMode": "allowed"
       }
     ]

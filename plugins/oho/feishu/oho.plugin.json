@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "feishu",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "飞书",
   "description": "连接中国区飞书，查看任务列表和任务详情。",
   "icon": "assets/icon.svg",
@@ -55,6 +55,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 5,
         "executionMode": "sequential",
+        "displayDescription": "查看分配给自己的飞书任务列表。",
         "defaultMode": "allowed"
       },
       {
@@ -84,6 +85,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 5,
         "executionMode": "sequential",
+        "displayDescription": "阅读指定飞书任务的说明和详细信息。",
         "defaultMode": "allowed"
       }
     ]

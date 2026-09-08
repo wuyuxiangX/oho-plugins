@@ -8,10 +8,19 @@ const service = new ProviderService(async () => {
 for (const id of pluginIds) {
 	const path = new URL(`../plugins/oho/${id}/oho.plugin.json`, import.meta.url);
 	const manifest = JSON.parse(await readFile(path, "utf8"));
+	// Preserve product copy while deriving execution fields from the handlers.
+	const displayDescriptions = new Map<string, string | undefined>(
+		(manifest.contributes?.tools ?? []).map(
+			(tool: { id: string; displayDescription?: string }) => [tool.id, tool.displayDescription],
+		),
+	);
 	const tools = createPluginTools(id, service).map(({ manifest: tool }) => {
 		const { runtimeName, schemaHash, version, ...metadata } = tool;
 		return {
 			...metadata,
+			...(displayDescriptions.get(runtimeName)
+				? { displayDescription: displayDescriptions.get(runtimeName) }
+				: {}),
 			id: runtimeName,
 			defaultMode: tool.sideEffect === "none" ? "allowed" : "approval_required",
 		};

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "id": "developer-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Developer Toolkit",
   "description": "在聊天中格式化 JSON，并快速统计文本的行数、词数、字符数和 UTF-8 字节数。",
   "icon": "assets/icon.svg",

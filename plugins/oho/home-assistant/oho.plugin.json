@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "home-assistant",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "Home Assistant",
   "description": "Read the current state of entities explicitly exposed by Home Assistant.",
   "icon": "assets/icon.png",

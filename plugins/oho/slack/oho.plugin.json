@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "slack",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Slack",
   "description": "读取频道、消息和线程，并在逐次批准后发送纯文本消息。",
   "icon": "assets/icon.svg",
@@ -50,6 +50,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "浏览可以访问的公开频道。",
         "defaultMode": "allowed"
       },
       {
@@ -85,6 +86,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "阅读指定频道中的近期消息。",
         "defaultMode": "allowed"
       },
       {
@@ -120,6 +122,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 3,
         "executionMode": "sequential",
+        "displayDescription": "为指定频道准备一条文字消息的发送请求。",
         "defaultMode": "approval_required"
       },
       {
@@ -149,6 +152,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "查看频道名称、主题和用途等信息。",
         "defaultMode": "allowed"
       },
       {
@@ -195,6 +199,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 4,
         "executionMode": "sequential",
+        "displayDescription": "阅读一条消息下的回复，了解完整讨论。",
         "defaultMode": "allowed"
       }
     ]

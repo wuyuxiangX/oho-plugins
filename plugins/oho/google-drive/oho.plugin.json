@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "google-drive",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Google Drive",
   "description": "搜索和查看文件、文件夹及其元数据。",
   "icon": "assets/icon.svg",
@@ -57,6 +57,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "按名称或查询条件查找云端文件。",
         "defaultMode": "allowed"
       },
       {
@@ -86,6 +87,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "查看文件名称、类型、大小和更新时间等信息。",
         "defaultMode": "allowed"
       },
       {
@@ -126,6 +128,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "浏览指定文件夹中的文件和子文件夹。",
         "defaultMode": "allowed"
       }
     ]

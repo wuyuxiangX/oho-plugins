@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "stripe",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Stripe",
   "description": "使用限权 Key 查看和搜索 Payment Intent 状态。",
   "icon": "assets/icon.svg",
@@ -50,6 +50,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 5,
         "executionMode": "sequential",
+        "displayDescription": "查看付款列表及各笔付款的处理状态。",
         "defaultMode": "allowed"
       },
       {
@@ -79,6 +80,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 6,
         "executionMode": "sequential",
+        "displayDescription": "了解一笔付款的金额、币种和当前状态。",
         "defaultMode": "allowed"
       },
       {
@@ -119,6 +121,7 @@
         "timeoutMs": 20000,
         "maxCallsPerRun": 5,
         "executionMode": "sequential",
+        "displayDescription": "按查询条件搜索付款记录。",
         "defaultMode": "allowed"
       }
     ]
