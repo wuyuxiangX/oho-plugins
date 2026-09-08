@@ -4,7 +4,11 @@
   "version": "1.1.0",
   "name": "Gmail",
   "description": "搜索和读取邮件与标签、管理草稿，并在逐次批准后发送邮件。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["communication", "productivity"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/gmail",
   "contributes": {
     "skills": [],
     "commands": [],

@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Google Calendar",
   "description": "读取日历列表、事件详情和忙闲状态。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["productivity"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/google-calendar",
   "contributes": {
     "skills": [],
     "commands": [],

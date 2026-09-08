@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Resend",
   "description": "使用自己的 Resend 账号发送事务邮件，每次发送都需要批准。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["developer-tools", "communication"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/resend",
   "contributes": {
     "skills": [],
     "commands": [],

@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Notion",
   "description": "搜索并分页读取你明确授权的页面、属性和内容块。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["productivity", "content-writing"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/notion",
   "contributes": {
     "skills": [],
     "commands": [],

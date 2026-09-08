@@ -4,9 +4,15 @@
   "version": "0.1.0",
   "name": "会议纪要",
   "description": "把零散会议记录整理成结论、行动项、负责人和待确认问题。无需账号或外部服务。",
+  "icon": "assets/icon.svg",
   "publisher": {
-    "name": "Oho"
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
   },
+  "categories": ["productivity", "communication"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/meeting-notes",
   "contributes": {
     "skills": [
       {

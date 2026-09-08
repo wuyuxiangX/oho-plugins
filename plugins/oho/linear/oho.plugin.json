@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Linear",
   "description": "查看和搜索 Issues、评论、Teams 与 Projects。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["project-management", "developer-tools"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/linear",
   "contributes": {
     "skills": [],
     "commands": [],

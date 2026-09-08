@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Google Sheets",
   "description": "读取表格结构和一个或多个明确范围。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["productivity", "data-analytics"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/google-sheets",
   "contributes": {
     "skills": [],
     "commands": [],

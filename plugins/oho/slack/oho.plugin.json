@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Slack",
   "description": "读取频道、消息和线程，并在逐次批准后发送纯文本消息。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["communication", "productivity"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/slack",
   "contributes": {
     "skills": [],
     "commands": [],

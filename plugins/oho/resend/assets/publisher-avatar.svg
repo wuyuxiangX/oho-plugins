@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title description">
+  <title id="title">Oho</title>
+  <desc id="description">Oho green mascot with uneven eyes and an h-shaped curl.</desc>
+  <defs>
+    <linearGradient id="body-fill" x1="210" y1="230" x2="790" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#52d79b"/>
+      <stop offset="1" stop-color="#46cf8d"/>
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="960" height="960" rx="224" fill="#f7f3eb"/>
+  <g transform="translate(30.72 83.36) scale(0.94)">
+    <path d="M388 190C523 186 650 238 748 323C839 401 888 496 881 582C874 671 801 731 697 764C595 797 460 808 353 788C247 769 177 708 154 621C132 537 142 448 176 367C211 286 283 205 388 190Z" fill="url(#body-fill)"/>
+    <path d="M448 120C428 145 423 199 425 240C426 265 437 272 449 247C460 222 478 211 498 219C522 229 521 254 540 269C554 280 570 280 585 270" fill="none" stroke="#111312" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M372 333C430 326 476 364 486 428C497 494 470 559 417 582C362 605 305 571 286 506C268 444 287 345 372 333Z" fill="#f7f3eb"/>
+    <path d="M615 346C664 342 701 378 710 431C719 486 694 540 650 554C603 569 559 539 548 487C537 434 558 354 615 346Z" fill="#f7f3eb"/>
+    <path d="M428 410C452 406 471 427 474 460C478 496 462 524 438 526C412 527 396 505 395 471C394 439 405 414 428 410Z" fill="#111312"/>
+    <path d="M663 408C685 405 701 424 703 454C706 486 693 511 671 513C649 515 635 494 634 464C633 435 642 411 663 408Z" fill="#111312"/>
+  </g>
+</svg>

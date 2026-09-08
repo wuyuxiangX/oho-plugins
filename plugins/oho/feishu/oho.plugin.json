@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "飞书",
   "description": "连接中国区飞书，查看任务列表和任务详情。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["communication", "productivity"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/feishu",
   "contributes": {
     "skills": [],
     "commands": [],

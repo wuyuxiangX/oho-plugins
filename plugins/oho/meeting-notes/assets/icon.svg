@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="会议纪要">
+  <rect width="128" height="128" rx="28" fill="#ede9fe"/>
+  <path d="M37 25h42l17 17v61H37V25Z" fill="#fff" stroke="#6d28d9" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M79 25v19h17M51 59h30M51 74h30M51 89h20" fill="none" stroke="#6d28d9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

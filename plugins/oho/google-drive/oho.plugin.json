@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Google Drive",
   "description": "搜索和查看文件、文件夹及其元数据。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["productivity"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/google-drive",
   "contributes": {
     "skills": [],
     "commands": [],

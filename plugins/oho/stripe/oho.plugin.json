@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "Stripe",
   "description": "使用限权 Key 查看和搜索 Payment Intent 状态。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["finance", "developer-tools"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/stripe",
   "contributes": {
     "skills": [],
     "commands": [],

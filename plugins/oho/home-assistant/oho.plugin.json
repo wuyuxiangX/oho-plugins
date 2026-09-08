@@ -4,9 +4,15 @@
   "version": "0.1.0",
   "name": "Home Assistant",
   "description": "Read the current state of entities explicitly exposed by Home Assistant.",
+  "icon": "assets/icon.png",
   "publisher": {
-    "name": "Oho"
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
   },
+  "categories": ["smart-home", "lifestyle"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/home-assistant",
   "contributes": {
     "skills": [
       {

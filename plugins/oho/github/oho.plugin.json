@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "name": "GitHub",
   "description": "读取公开仓库、文件、Issue、Pull Request、提交、分支和 Release。",
-  "publisher": { "name": "Oho" },
+  "icon": "assets/icon.svg",
+  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
+  "categories": ["developer-tools", "project-management"],
+  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/github",
   "contributes": {
     "skills": [],
     "commands": [],
