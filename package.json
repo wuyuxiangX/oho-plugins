@@ -1,0 +1,22 @@
+{
+  "name": "oho-plugin-registry",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json",
+    "catalog:generate": "tsx scripts/generate-catalog.ts",
+    "catalog:check": "tsx scripts/generate-catalog.ts --check",
+    "serve": "tsx runtime/serve.ts"
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.9.3",
+    "tsx": "^4.20.3",
+    "vitest": "^4.1.10"
+  }
+}

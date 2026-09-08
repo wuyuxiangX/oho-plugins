@@ -1,18 +1,194 @@
 {
   "schemaVersion": 1,
   "id": "stripe",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Stripe",
   "description": "使用限权 Key 查看和搜索 Payment Intent 状态。",
   "icon": "assets/icon.svg",
-  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
-  "categories": ["finance", "developer-tools"],
-  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "publisher": {
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
+  },
+  "categories": [
+    "finance",
+    "developer-tools"
+  ],
+  "contributors": [
+    {
+      "id": "wuyuxiangX",
+      "name": "wuyuxiangX"
+    }
+  ],
   "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/stripe",
   "contributes": {
     "skills": [],
     "commands": [],
-    "connections": [{ "id": "stripe", "label": "Stripe" }]
+    "tools": [
+      {
+        "id": "stripe_list_payment_intents",
+        "label": "查看 Stripe Payment Intents",
+        "description": "List bounded payment status metadata using a restricted Stripe key. Amounts remain integer minor-unit strings.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 5,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "stripe_read_payment_intent",
+        "label": "读取 Stripe Payment Intent",
+        "description": "Read bounded status and amount metadata for one explicit Payment Intent. Secret fields are never returned.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "paymentIntentId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "paymentIntentId"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "stripe_search_payment_intents",
+        "label": "搜索 Stripe Payment Intents",
+        "description": "Search Payment Intent status metadata using Stripe search syntax and a restricted key.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            },
+            "page": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 5,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      }
+    ]
   },
-  "compatibility": { "ohoPackApi": "1" }
+  "compatibility": {
+    "ohoPackApi": "1",
+    "mcp": [
+      "2025-06-18"
+    ]
+  },
+  "runtime": {
+    "kind": "remote_mcp",
+    "supportedExecutors": [
+      "oho_client"
+    ],
+    "protocolVersion": "2025-06-18",
+    "endpoint": {
+      "kind": "per_installation",
+      "baseUrlField": "base_url",
+      "path": "/mcp/stripe"
+    },
+    "auth": {
+      "kind": "bearer_token",
+      "secretField": "access_token"
+    }
+  },
+  "permissions": {
+    "network": [
+      {
+        "kind": "user_configured_origin",
+        "field": "base_url"
+      }
+    ],
+    "secrets": [
+      "access_token"
+    ]
+  },
+  "connectionFields": [
+    {
+      "id": "base_url",
+      "kind": "url",
+      "label": "插件服务地址",
+      "required": true,
+      "description": "填写已运行的插件服务地址。"
+    },
+    {
+      "id": "access_token",
+      "kind": "secret",
+      "label": "插件连接密钥",
+      "required": true,
+      "description": "用于连接插件服务，由服务的管理者提供。"
+    }
+  ],
+  "toolPolicy": {
+    "discovery": "mcp_tools_list",
+    "allow": [
+      "stripe_list_payment_intents",
+      "stripe_read_payment_intent",
+      "stripe_search_payment_intents"
+    ],
+    "risk": {
+      "stripe_list_payment_intents": "medium",
+      "stripe_read_payment_intent": "medium",
+      "stripe_search_payment_intents": "medium"
+    },
+    "defaultMode": {
+      "stripe_list_payment_intents": "allowed",
+      "stripe_read_payment_intent": "allowed",
+      "stripe_search_payment_intents": "allowed"
+    },
+    "maxCallsPerRun": 6
+  }
 }

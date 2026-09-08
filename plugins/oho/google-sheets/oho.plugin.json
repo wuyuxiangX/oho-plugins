@@ -1,20 +1,202 @@
 {
   "schemaVersion": 1,
   "id": "google-sheets",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Google Sheets",
   "description": "读取表格结构和一个或多个明确范围。",
   "icon": "assets/icon.svg",
-  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
-  "categories": ["productivity", "data-analytics"],
-  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "publisher": {
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
+  },
+  "categories": [
+    "productivity",
+    "data-analytics"
+  ],
+  "contributors": [
+    {
+      "id": "wuyuxiangX",
+      "name": "wuyuxiangX"
+    }
+  ],
   "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/google-sheets",
   "contributes": {
     "skills": [],
     "commands": [],
-    "connections": [
-      { "id": "google_sheets", "label": "Google Sheets" }
+    "tools": [
+      {
+        "id": "google_sheets_read_values",
+        "label": "读取 Google Sheets 范围",
+        "description": "Read one explicit A1 range from a Google Spreadsheet. Returned cells are bounded and treated as untrusted data.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "spreadsheetId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "range": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            }
+          },
+          "required": [
+            "spreadsheetId",
+            "range"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "google_sheets_read_spreadsheet",
+        "label": "读取 Google Sheets 信息",
+        "description": "Read spreadsheet and worksheet metadata without fetching grid values.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "spreadsheetId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "spreadsheetId"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 5,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "google_sheets_batch_read_values",
+        "label": "批量读取 Google Sheets 范围",
+        "description": "Read up to 10 explicit A1 ranges with bounded rows, columns, and cell sizes.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "spreadsheetId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ranges": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              },
+              "minItems": 1,
+              "maxItems": 10
+            }
+          },
+          "required": [
+            "spreadsheetId",
+            "ranges"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 5,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      }
     ]
   },
-  "compatibility": { "ohoPackApi": "1" }
+  "compatibility": {
+    "ohoPackApi": "1",
+    "mcp": [
+      "2025-06-18"
+    ]
+  },
+  "runtime": {
+    "kind": "remote_mcp",
+    "supportedExecutors": [
+      "oho_client"
+    ],
+    "protocolVersion": "2025-06-18",
+    "endpoint": {
+      "kind": "per_installation",
+      "baseUrlField": "base_url",
+      "path": "/mcp/google-sheets"
+    },
+    "auth": {
+      "kind": "bearer_token",
+      "secretField": "access_token"
+    }
+  },
+  "permissions": {
+    "network": [
+      {
+        "kind": "user_configured_origin",
+        "field": "base_url"
+      }
+    ],
+    "secrets": [
+      "access_token"
+    ]
+  },
+  "connectionFields": [
+    {
+      "id": "base_url",
+      "kind": "url",
+      "label": "插件服务地址",
+      "required": true,
+      "description": "填写已运行的插件服务地址。"
+    },
+    {
+      "id": "access_token",
+      "kind": "secret",
+      "label": "插件连接密钥",
+      "required": true,
+      "description": "用于连接插件服务，由服务的管理者提供。"
+    }
+  ],
+  "toolPolicy": {
+    "discovery": "mcp_tools_list",
+    "allow": [
+      "google_sheets_read_values",
+      "google_sheets_read_spreadsheet",
+      "google_sheets_batch_read_values"
+    ],
+    "risk": {
+      "google_sheets_read_values": "medium",
+      "google_sheets_read_spreadsheet": "low",
+      "google_sheets_batch_read_values": "medium"
+    },
+    "defaultMode": {
+      "google_sheets_read_values": "allowed",
+      "google_sheets_read_spreadsheet": "allowed",
+      "google_sheets_batch_read_values": "allowed"
+    },
+    "maxCallsPerRun": 6
+  }
 }

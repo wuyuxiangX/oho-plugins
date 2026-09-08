@@ -1,18 +1,823 @@
 {
   "schemaVersion": 1,
   "id": "github",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "GitHub",
   "description": "读取公开仓库、文件、Issue、Pull Request、提交、分支和 Release。",
   "icon": "assets/icon.svg",
-  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
-  "categories": ["developer-tools", "project-management"],
-  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "publisher": {
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
+  },
+  "categories": [
+    "developer-tools",
+    "project-management"
+  ],
+  "contributors": [
+    {
+      "id": "wuyuxiangX",
+      "name": "wuyuxiangX"
+    }
+  ],
   "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/github",
   "contributes": {
     "skills": [],
     "commands": [],
-    "connections": [{ "id": "github", "label": "GitHub" }]
+    "tools": [
+      {
+        "id": "github_list_public_repositories",
+        "label": "查看 GitHub 公开仓库",
+        "description": "List public repositories associated with the connected GitHub user. Private repositories are not requested.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_search_public_repositories",
+        "label": "搜索 GitHub 公开仓库",
+        "description": "Search public GitHub repositories by keywords.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_read_public_repository",
+        "label": "读取 GitHub 仓库信息",
+        "description": "Read metadata for one public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_public_repository_contents",
+        "label": "查看 GitHub 仓库目录",
+        "description": "List a bounded directory in a public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "path": {
+              "type": "string",
+              "maxLength": 1024,
+              "default": ""
+            },
+            "ref": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 30
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_read_public_repository_file",
+        "label": "读取 GitHub 仓库文件",
+        "description": "Read one explicitly selected UTF-8 text file up to 64 KiB from a public repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "ref": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "owner",
+            "repository",
+            "path"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_issues",
+        "label": "查看 GitHub Issues",
+        "description": "List issues in one public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "open",
+                "closed",
+                "all"
+              ],
+              "default": "open"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_read_issue",
+        "label": "读取 GitHub Issue",
+        "description": "Read one issue and its body from a public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "number": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository",
+            "number"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_issue_comments",
+        "label": "查看 GitHub Issue 评论",
+        "description": "List bounded comments for one public issue or pull request.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "number": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 10
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository",
+            "number"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_pull_requests",
+        "label": "查看 GitHub Pull Requests",
+        "description": "List pull requests in one public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "open",
+                "closed",
+                "all"
+              ],
+              "default": "open"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_read_pull_request",
+        "label": "读取 GitHub Pull Request",
+        "description": "Read one pull request and its body from a public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "number": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository",
+            "number"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_pull_request_files",
+        "label": "查看 GitHub PR 文件变更",
+        "description": "List bounded file changes and patch excerpts for one public pull request.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "number": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 10
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository",
+            "number"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_commits",
+        "label": "查看 GitHub 提交",
+        "description": "List commits for a public repository and optional branch, tag, or SHA.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "ref": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_read_commit",
+        "label": "读取 GitHub 提交详情",
+        "description": "Read one commit and bounded changed-file details from a public repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "ref": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "owner",
+            "repository",
+            "ref"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "medium",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_branches",
+        "label": "查看 GitHub 分支",
+        "description": "List branches in one public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "github_list_releases",
+        "label": "查看 GitHub Releases",
+        "description": "List releases in one public GitHub repository.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "repository": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30,
+              "default": 20
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 1
+            }
+          },
+          "required": [
+            "owner",
+            "repository"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      }
+    ]
   },
-  "compatibility": { "ohoPackApi": "1" }
+  "compatibility": {
+    "ohoPackApi": "1",
+    "mcp": [
+      "2025-06-18"
+    ]
+  },
+  "runtime": {
+    "kind": "remote_mcp",
+    "supportedExecutors": [
+      "oho_client"
+    ],
+    "protocolVersion": "2025-06-18",
+    "endpoint": {
+      "kind": "per_installation",
+      "baseUrlField": "base_url",
+      "path": "/mcp/github"
+    },
+    "auth": {
+      "kind": "bearer_token",
+      "secretField": "access_token"
+    }
+  },
+  "permissions": {
+    "network": [
+      {
+        "kind": "user_configured_origin",
+        "field": "base_url"
+      }
+    ],
+    "secrets": [
+      "access_token"
+    ]
+  },
+  "connectionFields": [
+    {
+      "id": "base_url",
+      "kind": "url",
+      "label": "插件服务地址",
+      "required": true,
+      "description": "填写已运行的插件服务地址。"
+    },
+    {
+      "id": "access_token",
+      "kind": "secret",
+      "label": "插件连接密钥",
+      "required": true,
+      "description": "用于连接插件服务，由服务的管理者提供。"
+    }
+  ],
+  "toolPolicy": {
+    "discovery": "mcp_tools_list",
+    "allow": [
+      "github_list_public_repositories",
+      "github_search_public_repositories",
+      "github_read_public_repository",
+      "github_list_public_repository_contents",
+      "github_read_public_repository_file",
+      "github_list_issues",
+      "github_read_issue",
+      "github_list_issue_comments",
+      "github_list_pull_requests",
+      "github_read_pull_request",
+      "github_list_pull_request_files",
+      "github_list_commits",
+      "github_read_commit",
+      "github_list_branches",
+      "github_list_releases"
+    ],
+    "risk": {
+      "github_list_public_repositories": "low",
+      "github_search_public_repositories": "low",
+      "github_read_public_repository": "low",
+      "github_list_public_repository_contents": "low",
+      "github_read_public_repository_file": "medium",
+      "github_list_issues": "low",
+      "github_read_issue": "medium",
+      "github_list_issue_comments": "medium",
+      "github_list_pull_requests": "low",
+      "github_read_pull_request": "medium",
+      "github_list_pull_request_files": "medium",
+      "github_list_commits": "low",
+      "github_read_commit": "medium",
+      "github_list_branches": "low",
+      "github_list_releases": "low"
+    },
+    "defaultMode": {
+      "github_list_public_repositories": "allowed",
+      "github_search_public_repositories": "allowed",
+      "github_read_public_repository": "allowed",
+      "github_list_public_repository_contents": "allowed",
+      "github_read_public_repository_file": "allowed",
+      "github_list_issues": "allowed",
+      "github_read_issue": "allowed",
+      "github_list_issue_comments": "allowed",
+      "github_list_pull_requests": "allowed",
+      "github_read_pull_request": "allowed",
+      "github_list_pull_request_files": "allowed",
+      "github_list_commits": "allowed",
+      "github_read_commit": "allowed",
+      "github_list_branches": "allowed",
+      "github_list_releases": "allowed"
+    },
+    "maxCallsPerRun": 6
+  }
 }

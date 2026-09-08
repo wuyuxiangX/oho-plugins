@@ -58,11 +58,25 @@ OHO_PLUGIN_REGISTRY_PATH=/path/to/oho-plugins pnpm dev
 After refreshing the Plugin Center, the plugin appears under **Market**. Local
 CLI registrations appear separately under **Development**.
 
-## Initial catalog
+## Catalog and runtime
 
-The repository currently includes Oho-published connection packages and three
-installable development examples: Home Assistant (remote MCP), Meeting Notes
-(Skill and commands), and Developer Toolkit (local Node Tools). The other twelve
-entries currently declare planned connections and are not installable.
+The registry includes 12 migrated account integrations with 55 implemented tools,
+plus Home Assistant, Meeting Notes and Developer Toolkit. The migrated MCP bridge
+executes 51 reads with a configured account. Four write/send handlers remain
+blocked until a host supplies durable approval and resume support.
+
+```bash
+pnpm install --frozen-lockfile
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm catalog:check
+```
+
+After editing tool schemas, run `pnpm catalog:generate` and commit the generated
+manifests together with the implementation. Oho consumes the pinned manifest
+revision and compares it with MCP discovery at installation time.
+
+See [runtime setup](docs/runtime.md) and [migration coverage](docs/migration.md).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the current manual contribution flow.

@@ -1,18 +1,201 @@
 {
   "schemaVersion": 1,
   "id": "google-drive",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Google Drive",
   "description": "搜索和查看文件、文件夹及其元数据。",
   "icon": "assets/icon.svg",
-  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
-  "categories": ["productivity"],
-  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "publisher": {
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
+  },
+  "categories": [
+    "productivity"
+  ],
+  "contributors": [
+    {
+      "id": "wuyuxiangX",
+      "name": "wuyuxiangX"
+    }
+  ],
   "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/google-drive",
   "contributes": {
     "skills": [],
     "commands": [],
-    "connections": [{ "id": "google_drive", "label": "Google Drive" }]
+    "tools": [
+      {
+        "id": "google_drive_search_files",
+        "label": "搜索 Google Drive 文件",
+        "description": "Search Google Drive file metadata by name. This tool does not download file bodies.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "google_drive_read_file_metadata",
+        "label": "读取 Google Drive 文件信息",
+        "description": "Read metadata for one explicit Google Drive file. This does not download file content.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "fileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "fileId"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      },
+      {
+        "id": "google_drive_list_folder_children",
+        "label": "查看 Google Drive 文件夹",
+        "description": "List one bounded page of direct child file metadata for an explicit Drive folder.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "folderId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50
+            },
+            "pageToken": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            }
+          },
+          "required": [
+            "folderId"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "low",
+        "sideEffect": "none",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 6,
+        "executionMode": "sequential",
+        "defaultMode": "allowed"
+      }
+    ]
   },
-  "compatibility": { "ohoPackApi": "1" }
+  "compatibility": {
+    "ohoPackApi": "1",
+    "mcp": [
+      "2025-06-18"
+    ]
+  },
+  "runtime": {
+    "kind": "remote_mcp",
+    "supportedExecutors": [
+      "oho_client"
+    ],
+    "protocolVersion": "2025-06-18",
+    "endpoint": {
+      "kind": "per_installation",
+      "baseUrlField": "base_url",
+      "path": "/mcp/google-drive"
+    },
+    "auth": {
+      "kind": "bearer_token",
+      "secretField": "access_token"
+    }
+  },
+  "permissions": {
+    "network": [
+      {
+        "kind": "user_configured_origin",
+        "field": "base_url"
+      }
+    ],
+    "secrets": [
+      "access_token"
+    ]
+  },
+  "connectionFields": [
+    {
+      "id": "base_url",
+      "kind": "url",
+      "label": "插件服务地址",
+      "required": true,
+      "description": "填写已运行的插件服务地址。"
+    },
+    {
+      "id": "access_token",
+      "kind": "secret",
+      "label": "插件连接密钥",
+      "required": true,
+      "description": "用于连接插件服务，由服务的管理者提供。"
+    }
+  ],
+  "toolPolicy": {
+    "discovery": "mcp_tools_list",
+    "allow": [
+      "google_drive_search_files",
+      "google_drive_read_file_metadata",
+      "google_drive_list_folder_children"
+    ],
+    "risk": {
+      "google_drive_search_files": "low",
+      "google_drive_read_file_metadata": "low",
+      "google_drive_list_folder_children": "low"
+    },
+    "defaultMode": {
+      "google_drive_search_files": "allowed",
+      "google_drive_read_file_metadata": "allowed",
+      "google_drive_list_folder_children": "allowed"
+    },
+    "maxCallsPerRun": 6
+  }
 }

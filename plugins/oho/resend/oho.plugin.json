@@ -1,18 +1,135 @@
 {
   "schemaVersion": 1,
   "id": "resend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Resend",
   "description": "使用自己的 Resend 账号发送事务邮件，每次发送都需要批准。",
   "icon": "assets/icon.svg",
-  "publisher": { "id": "oho", "name": "Oho", "avatar": "assets/publisher-avatar.svg" },
-  "categories": ["developer-tools", "communication"],
-  "contributors": [{ "id": "wuyuxiangX", "name": "wuyuxiangX" }],
+  "publisher": {
+    "id": "oho",
+    "name": "Oho",
+    "avatar": "assets/publisher-avatar.svg"
+  },
+  "categories": [
+    "developer-tools",
+    "communication"
+  ],
+  "contributors": [
+    {
+      "id": "wuyuxiangX",
+      "name": "wuyuxiangX"
+    }
+  ],
   "repository": "https://github.com/wuyuxiangX/oho-plugins/tree/main/plugins/oho/resend",
   "contributes": {
     "skills": [],
     "commands": [],
-    "connections": [{ "id": "resend", "label": "Resend" }]
+    "tools": [
+      {
+        "id": "resend_propose_send",
+        "label": "申请通过 Resend 发送邮件",
+        "description": "Create an exact, durable proposal for a plain-text transactional email. Resend sends only after the user approves that revision.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "to": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "email"
+              },
+              "minItems": 1,
+              "maxItems": 10
+            },
+            "subject": {
+              "type": "string",
+              "maxLength": 998
+            },
+            "body": {
+              "type": "string",
+              "maxLength": 65536
+            }
+          },
+          "required": [
+            "to",
+            "subject",
+            "body"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object"
+        },
+        "risk": "high",
+        "sideEffect": "irreversible",
+        "network": "restricted",
+        "timeoutMs": 20000,
+        "maxCallsPerRun": 2,
+        "executionMode": "sequential",
+        "defaultMode": "approval_required"
+      }
+    ]
   },
-  "compatibility": { "ohoPackApi": "1" }
+  "compatibility": {
+    "ohoPackApi": "1",
+    "mcp": [
+      "2025-06-18"
+    ]
+  },
+  "runtime": {
+    "kind": "remote_mcp",
+    "supportedExecutors": [
+      "oho_client"
+    ],
+    "protocolVersion": "2025-06-18",
+    "endpoint": {
+      "kind": "per_installation",
+      "baseUrlField": "base_url",
+      "path": "/mcp/resend"
+    },
+    "auth": {
+      "kind": "bearer_token",
+      "secretField": "access_token"
+    }
+  },
+  "permissions": {
+    "network": [
+      {
+        "kind": "user_configured_origin",
+        "field": "base_url"
+      }
+    ],
+    "secrets": [
+      "access_token"
+    ]
+  },
+  "connectionFields": [
+    {
+      "id": "base_url",
+      "kind": "url",
+      "label": "插件服务地址",
+      "required": true,
+      "description": "填写已运行的插件服务地址。"
+    },
+    {
+      "id": "access_token",
+      "kind": "secret",
+      "label": "插件连接密钥",
+      "required": true,
+      "description": "用于连接插件服务，由服务的管理者提供。"
+    }
+  ],
+  "toolPolicy": {
+    "discovery": "mcp_tools_list",
+    "allow": [
+      "resend_propose_send"
+    ],
+    "risk": {
+      "resend_propose_send": "high"
+    },
+    "defaultMode": {
+      "resend_propose_send": "approval_required"
+    },
+    "maxCallsPerRun": 2
+  }
 }

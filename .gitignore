@@ -5,3 +5,6 @@ node_modules/
 !.env.example
 *.log
 
+build/
+coverage/
+.plugin-state/
