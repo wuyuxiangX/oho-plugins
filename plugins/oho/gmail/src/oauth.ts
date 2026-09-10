@@ -11,12 +11,12 @@ import type { GmailClient } from "./client.js";
 export class GmailOAuthDriver implements ConnectorOAuthDriver {
 	readonly connectorId = GMAIL_CONNECTOR_ID;
 	readonly pkce = "S256" as const;
-	readonly requiredScopes = GMAIL_SCOPES;
 
 	constructor(
 		private readonly gmail: GmailClient,
 		private readonly clientId?: string,
 		private readonly clientSecret?: string,
+		readonly requiredScopes: readonly string[] = GMAIL_SCOPES,
 	) {}
 
 	get configured(): boolean {
@@ -35,7 +35,7 @@ export class GmailOAuthDriver implements ConnectorOAuthDriver {
 		authorization.searchParams.set("client_id", this.clientId);
 		authorization.searchParams.set("redirect_uri", input.redirectUri);
 		authorization.searchParams.set("response_type", "code");
-		authorization.searchParams.set("scope", GMAIL_SCOPES.join(" "));
+		authorization.searchParams.set("scope", this.requiredScopes.join(" "));
 		authorization.searchParams.set("access_type", "offline");
 		authorization.searchParams.set("prompt", "consent");
 		authorization.searchParams.set("include_granted_scopes", "false");

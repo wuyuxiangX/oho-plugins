@@ -2,6 +2,7 @@ import type { ConnectorId } from "./provider-metadata.js";
 
 export type ConnectorOAuthCredential = {
 	schemaVersion: "connector.oauth.v1";
+	oauthConfigVersion?: string;
 	connectorId: ConnectorId;
 	accessToken: string;
 	refreshToken?: string;

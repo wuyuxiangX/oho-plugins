@@ -277,5 +277,6 @@
       "slack_read_thread_replies": "allowed"
     },
     "maxCallsPerRun": 4
-  }
+  },
+  "authentication": "oauth"
 }

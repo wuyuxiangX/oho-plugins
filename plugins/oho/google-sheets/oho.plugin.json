@@ -201,5 +201,6 @@
       "google_sheets_batch_read_values": "allowed"
     },
     "maxCallsPerRun": 6
-  }
+  },
+  "authentication": "oauth"
 }

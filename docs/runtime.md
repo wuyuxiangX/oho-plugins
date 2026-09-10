@@ -1,5 +1,44 @@
 # Running a migrated plugin
 
+## Managed OAuth installation
+
+The normal Oho install flow uses `pnpm serve:managed`. Users install a plugin and
+consent in their browser; they do not configure a service URL, bridge token or
+OAuth app. The service is deployed separately from Oho and hosts the provider
+adapters in this repository. Oho keeps the generic user binding, encrypted token
+custody, refresh lock and Agent permissions.
+
+App credentials are **private plugin-service configuration**, not Oho environment
+variables and not public manifest fields. Configure an app using a protected JSON
+file containing `clientId` and, if needed, `clientSecret`:
+
+```sh
+pnpm oauth:configure gmail < /secure/google-app.json
+```
+
+The command atomically writes a new version to `~/.config/oho-plugins/oauth.json`
+(mode 0600; `OHO_PLUGIN_OAUTH_CONFIG_PATH` can select a secret-mounted file).
+The service reads the file for every operation. Adding or changing an app requires
+**no restart of Oho or this service**. Keep old versions while their issued grants
+are in use. Deploy new provider code independently of the Oho host.
+
+Service bootstrap needs `OHO_PLUGIN_SERVICE_TOKEN` (a separate random 32+ character
+host authentication secret) and `OHO_PLUGIN_REDIRECT_URI` (the Oho callback URL).
+It binds loopback; use a private authenticated HTTPS reverse proxy in cloud
+deployments. Never log request bodies or OAuth callback query strings.
+
+Both launchers honor `HTTP_PROXY` / `HTTPS_PROXY` and `NO_PROXY` for outbound
+provider requests. Loopback traffic stays direct. These are service-level network
+settings, independent of the hot-reloaded OAuth application configuration.
+
+OAuth adapters currently cover Gmail, Calendar, Drive, Sheets, GitHub, Slack,
+Notion, Feishu and Lark. Configure only apps registered to your deployment.
+Gmail managed authorization requests read-only access. Resend, Stripe and Linear
+are not yet exposed through this managed OAuth entry point; the presence of their
+tool implementations is not proof of a completed authorization integration.
+
+The single-account launcher below is an advanced development option.
+
 Oho reads catalog metadata from a pinned Git commit without starting this service.
 Calling a migrated account tool requires a running MCP bridge with that account's
 credentials. The bridge runs from this repository, outside the Oho server.

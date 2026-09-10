@@ -154,5 +154,6 @@
       "feishu_read_task": "allowed"
     },
     "maxCallsPerRun": 5
-  }
+  },
+  "authentication": "oauth"
 }

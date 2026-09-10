@@ -1,6 +1,8 @@
 import { createPluginMcpServer } from "./mcp-server.js";
 import { pluginIds, type PluginId } from "./plugins.js";
+import { configureOutboundProxy } from "./outbound-proxy.js";
 
+configureOutboundProxy();
 const pluginId = process.argv[2];
 if (!pluginIds.includes(pluginId as PluginId))
 	throw new Error(`Choose a plugin: ${pluginIds.join(", ")}`);
