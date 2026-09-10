@@ -200,5 +200,6 @@
       "google_drive_list_folder_children": "allowed"
     },
     "maxCallsPerRun": 6
-  }
+  },
+  "authentication": "oauth"
 }

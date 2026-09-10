@@ -834,5 +834,6 @@
       "github_list_releases": "allowed"
     },
     "maxCallsPerRun": 6
-  }
+  },
+  "authentication": "oauth"
 }

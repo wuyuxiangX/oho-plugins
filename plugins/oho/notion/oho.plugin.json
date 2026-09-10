@@ -234,5 +234,6 @@
       "notion_list_block_children": "allowed"
     },
     "maxCallsPerRun": 8
-  }
+  },
+  "authentication": "oauth"
 }

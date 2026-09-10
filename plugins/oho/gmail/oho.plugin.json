@@ -330,5 +330,6 @@
       "gmail_read_draft": "allowed"
     },
     "maxCallsPerRun": 8
-  }
+  },
+  "authentication": "oauth"
 }

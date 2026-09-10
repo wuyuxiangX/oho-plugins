@@ -854,17 +854,14 @@ export class GoogleWorkspaceClient implements ConnectorOAuthDriver {
 		fallbackScopes: readonly string[] = [],
 		fallbackRefreshToken?: string,
 	): ConnectorOAuthCredential {
+		const scopes = token.scope ? token.scope.split(/\s+/).filter(Boolean) : fallbackScopes;
 		return oauthCredential({
 			connectorId: this.connectorId,
 			accessToken: token.access_token as string,
 			refreshToken: token.refresh_token ?? fallbackRefreshToken,
 			expiresIn: token.expires_in,
-			scopes: token.scope
-				? token.scope
-						.split(" ")
-						.map((scope) => scope.trim())
-						.filter(Boolean)
-				: fallbackScopes,
+			// Google may return the canonical URL for the requested email scope.
+			scopes: scopes.map((scope) => scope === "https://www.googleapis.com/auth/userinfo.email" ? "email" : scope),
 			now: this.now(),
 		});
 	}
